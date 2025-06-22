@@ -51,7 +51,6 @@ This project conducts a comprehensive analysis of Canada’s job market, focusin
 ##### Sources
 * https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1410028701
 * https://open.canada.ca/data/dataset/a70fcb3b-9a57-4e10-8372-9016935fc5d9
-* https://www.kaggle.com/datasets/ortizmacleod/employment-rate-canada
 * https://www.kaggle.com/datasets/arshkon/linkedin-job-postings
 
 #### Data Collection
@@ -63,7 +62,7 @@ This project conducts a comprehensive analysis of Canada’s job market, focusin
 
 2. Real-Time Data
     1. Fetch data using API key and Python’s requests.
-     2. Parse JSON responses into structured tables.
+    2. Parse responses into structured tables.
     3. Merge with historical data using pandas/SQL.
 
 #### Data Storage and Maintenance
