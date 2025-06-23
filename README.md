@@ -55,6 +55,14 @@ This project conducts a comprehensive analysis of Canada’s job market, focusin
 
 #### Data Collection
 
+##### Purpose
+
+- Cleaning datasets by fixing missing, null or error values.
+- Standardize raw data formats for loading into the job_market_trends database.
+- Maintain reproducibility and versioning of collected data files.
+
+##### Approaches
+
 1. Historical Data
     1. Download CSV/JSON datasets.
     2. Clean data using pandas.
@@ -69,7 +77,44 @@ This project conducts a comprehensive analysis of Canada’s job market, focusin
 
 Data Storage: Microsoft SQL Server
 
-Data Maintenance:
+##### Schema: 
 
-* Monthly archiving of API data.
-* Automated backups.
+Database: job_market_trends
+Tables: 
+1. _labour_force_stats_: Labour force characteristics by region, gender, age group
+
+2. _industry_jobs_: NAICS industry job counts across years and sectors
+
+3. _job_postings_: Detailed job postings scraped from LinkedIn or Google Jobs
+
+##### Maintenance Practices
+
+✅ Ingestion Strategy
+- Use `load_data.py` to insert or append CSV data to MySQL
+- Column normalization and null checks handled before insert
+- Timestamp columns converted appropriately
+
+🔄 Update Schedule
+- Monthly: Labour Force & Industry Jobs (from StatsCan, Open Canada)
+- Daily/Weekly:Job postings via automated scraper
+- Monthly archiving of API data.
+- Automated backups.
+
+🧹 Data Hygiene
+- De-duplication using primary keys
+- Missing values filled with defaults or flagged for review
+- Normalization ensures analytical consistency
+
+🛡️ Backups
+- Weekly dump using `mysqldump` to `/backups/`
+- Retain minimum 3 historical snapshots
+
+### Next Phase Plan
+- Merge all the scripts together and add automated testcases.
+- Start with Data Quality
+- Finalize on the visualizations required
+
+
+
+
+
